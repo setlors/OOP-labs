@@ -9,7 +9,6 @@ public class Lab1 {
         mainDialog.setSize(400, 400);
         mainDialog.setLocationRelativeTo(null);
         mainDialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-        mainDialog.setModal(true);
 
         JPanel mainPanel = new JPanel();
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
@@ -34,16 +33,18 @@ public class Lab1 {
         l2.setFont(font);
 
         moduleI1.addActionListener(e -> {
-            module1 dialog1 = new module1(mainDialog);
+            Module1 dialog1 = new Module1(mainDialog);
             dialog1.setVisible(true);
             String output = dialog1.getOutput();
             l1.setText(output);
         });
         moduleI2.addActionListener(e -> {
-            module2 dialog2 = new module2(mainDialog);
+            Module2 dialog2 = new Module2(mainDialog);
             dialog2.setVisible(true);
             int number = dialog2.getNumber();
-            l2.setText(String.valueOf(number));
+            if(number != 0) {
+                l2.setText(String.valueOf(number));
+            }
         });
         mainDialog.setJMenuBar(menu);
         mainDialog.setVisible(true);

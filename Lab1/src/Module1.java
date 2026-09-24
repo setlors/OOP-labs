@@ -2,9 +2,9 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class module1 extends JDialog {
+public class Module1 extends JDialog {
     private String output;
-    public module1(JDialog parent) {
+    public Module1(JDialog parent) {
         super(parent, "Робота 1", true);
         setSize(300, 200);
         setLocationRelativeTo(null);
