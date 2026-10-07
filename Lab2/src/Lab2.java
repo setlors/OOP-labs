@@ -80,10 +80,10 @@ public class Lab2 {
 
         JMenuItem exit = new JMenuItem("Вихід");
         JMenuItem about = new JMenuItem("Про програму");
-        JRadioButtonMenuItem point = new JRadioButtonMenuItem("Крапка");
-        JRadioButtonMenuItem line = new JRadioButtonMenuItem("Лінія");
-        JRadioButtonMenuItem rect = new JRadioButtonMenuItem("Прямокутник", true);
-        JRadioButtonMenuItem ellipse = new JRadioButtonMenuItem("Еліпс");
+        JCheckBoxMenuItem point = new JCheckBoxMenuItem("Крапка");
+        JCheckBoxMenuItem line = new JCheckBoxMenuItem("Лінія");
+        JCheckBoxMenuItem rect = new JCheckBoxMenuItem("Прямокутник", true);
+        JCheckBoxMenuItem ellipse = new JCheckBoxMenuItem("Еліпс");
 
         ButtonGroup group = new ButtonGroup();
         group.add(point);
