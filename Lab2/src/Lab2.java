@@ -10,6 +10,18 @@ public class Lab2 {
     static int startX, startY, curX, curY;
     static boolean drawing = false;
 
+    static Shape createShape() {
+        if (type == 0) {
+            return new PointShape(startX, startY, curX, curY);
+        } else if (type == 1) {
+            return new LineShape(startX, startY, curX, curY);
+        } else if (type == 2) {
+            return new RectShape(startX, startY, curX, curY);
+        } else {
+            return new EllipseShape(startX, startY, curX, curY);
+        }
+    }
+
     public static void main(String[] args) {
         JFrame frame = new JFrame("OOP_lab2");
         frame.setSize(800, 600);
@@ -23,16 +35,7 @@ public class Lab2 {
                     shapes[i].draw(g);
                 }
                 if (drawing) {
-                    g.setColor(Color.BLUE);
-                    if (type == 0) {
-                        g.fillOval(startX - 3, startY - 3, 6, 6);
-                    } else if (type == 1) {
-                        g.drawLine(startX, startY, curX, curY);
-                    } else if (type == 2) {
-                        g.drawRect(Math.min(startX, curX), Math.min(startY, curY), Math.abs(curX - startX), Math.abs(curY - startY));
-                    } else {
-                        g.drawOval(Math.min(curX, 2 * startX - curX), Math.min(curY, 2 * startY - curY), 2 * Math.abs(curX - startX), 2 * Math.abs(curY - startY));
-                    }
+                    Rubber.draw(g, createShape());
                 }
             }
         };
@@ -56,15 +59,7 @@ public class Lab2 {
                 curY = e.getY();
                 drawing = false;
                 if (count < shapes.length) {
-                    if (type == 0) {
-                        shapes[count++] = new PointShape(startX, startY, curX, curY);
-                    } else if (type == 1) {
-                        shapes[count++] = new LineShape(startX, startY, curX, curY);
-                    } else if (type == 2) {
-                        shapes[count++] = new RectShape(startX, startY, curX, curY);
-                    } else {
-                        shapes[count++] = new EllipseShape(startX, startY, curX, curY);
-                    }
+                    shapes[count++] = createShape();
                 }
                 panel.repaint();
             }

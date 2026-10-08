@@ -6,7 +6,7 @@ public class PointShape extends Shape {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
+        setOutline(g);
         g.fillOval(x1 - 3, y1 - 3, 6, 6);
     }
 }

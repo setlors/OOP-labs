@@ -6,7 +6,7 @@ public class LineShape extends Shape {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
+        setOutline(g);
         g.drawLine(x1, y1, x2, y2);
     }
 }

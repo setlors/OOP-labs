@@ -10,9 +10,11 @@ public class EllipseShape extends Shape {
         int top = Math.min(y2, 2 * y1 - y2);
         int w = 2 * Math.abs(x2 - x1);
         int h = 2 * Math.abs(y2 - y1);
-        g.setColor(Color.GRAY);
-        g.fillOval(left, top, w, h);
-        g.setColor(Color.BLACK);
+        if (!rubber) {
+            g.setColor(Color.GRAY);
+            g.fillOval(left, top, w, h);
+        }
+        setOutline(g);
         g.drawOval(left, top, w, h);
     }
 }
