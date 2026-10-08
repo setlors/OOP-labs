@@ -6,7 +6,7 @@ import java.awt.event.*;
 public class Lab2 {
     static Shape[] shapes = new Shape[118];
     static int count = 0;
-    static int type = 2;
+    static int type = 0;
     static int startX, startY, curX, curY;
     static boolean drawing = false;
 
@@ -80,9 +80,9 @@ public class Lab2 {
 
         JMenuItem exit = new JMenuItem("Вихід");
         JMenuItem about = new JMenuItem("Про програму");
-        JCheckBoxMenuItem point = new JCheckBoxMenuItem("Крапка");
+        JCheckBoxMenuItem point = new JCheckBoxMenuItem("Крапка",true);
         JCheckBoxMenuItem line = new JCheckBoxMenuItem("Лінія");
-        JCheckBoxMenuItem rect = new JCheckBoxMenuItem("Прямокутник", true);
+        JCheckBoxMenuItem rect = new JCheckBoxMenuItem("Прямокутник");
         JCheckBoxMenuItem ellipse = new JCheckBoxMenuItem("Еліпс");
 
         ButtonGroup group = new ButtonGroup();
