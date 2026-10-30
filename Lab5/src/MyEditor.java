@@ -6,8 +6,6 @@ import java.nio.file.Files;
 import java.util.List;
 
 public class MyEditor implements MyTable.TableListener {
-    private static final int CAPACITY = 119;
-
     private static class Holder {
         static final MyEditor INSTANCE = new MyEditor();
     }
@@ -19,7 +17,7 @@ public class MyEditor implements MyTable.TableListener {
     private MyEditor() {
     }
 
-    private final Shape[] shapes = new Shape[CAPACITY];
+    private final Shape[] shapes = new Shape[119];
     private int count = 0;
     private int type = 0;
     private int startX, startY, curX, curY;
@@ -61,7 +59,7 @@ public class MyEditor implements MyTable.TableListener {
     }
 
     private boolean addShape(Shape s) {
-        if (count >= CAPACITY) return false;
+        if (count >= shapes.length) return false;
         shapes[count++] = s;
         table.addRow(s.getName(), s.getX1(), s.getY1(), s.getX2(), s.getY2());
         return true;
