@@ -1,14 +1,7 @@
 public class ShapeRegistry {
-    interface Factory {
-        Shape create(int x1, int y1, int x2, int y2);
-    }
 
     private static final String[] NAMES =
             {"Крапка", "Лінія", "Прямокутник", "Еліпс", "Лінія з кружечками", "Куб"};
-
-    private static final Factory[] FACTORIES = {
-            PointShape::new, LineShape::new, RectShape::new,
-            EllipseShape::new, LineOShape::new, CubeShape::new};
 
     public static int size() {
         return NAMES.length;
@@ -18,8 +11,16 @@ public class ShapeRegistry {
         return NAMES[type];
     }
 
-    public static Shape create(int type, int x1, int y1, int x2, int y2) {
-        return FACTORIES[type].create(x1, y1, x2, y2);
+
+        public static Shape create(int type, int x1, int y1, int x2, int y2) {
+            return switch (type) {
+                case 0 -> new PointShape(x1, y1, x2, y2);
+                case 1 -> new LineShape(x1, y1, x2, y2);
+                case 2 -> new RectShape(x1, y1, x2, y2);
+                case 3 -> new EllipseShape(x1, y1, x2, y2);
+                case 4 -> new LineOShape(x1, y1, x2, y2);
+                default -> new CubeShape(x1, y1, x2, y2);
+            };
     }
 
     public static int indexOf(String name) {
