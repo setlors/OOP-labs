@@ -52,13 +52,13 @@ public class Editor {
     }
 
     private Shape createShape() {
-        switch (type) {
-            case 0: return new PointShape(startX, startY, curX, curY);
-            case 1: return new LineShape(startX, startY, curX, curY);
-            case 2: return new RectShape(startX, startY, curX, curY);
-            case 3: return new EllipseShape(startX, startY, curX, curY);
-            case 4: return new LineOShape(startX, startY, curX, curY);
-            default: return new CubeShape(startX, startY, curX, curY);
-        }
+        return switch (type) {
+            case 0 -> new PointShape(startX, startY, curX, curY);
+            case 1 -> new LineShape(startX, startY, curX, curY);
+            case 2 -> new RectShape(startX, startY, curX, curY);
+            case 3 -> new EllipseShape(startX, startY, curX, curY);
+            case 4 -> new LineOShape(startX, startY, curX, curY);
+            default -> new CubeShape(startX, startY, curX, curY);
+        };
     }
 }
