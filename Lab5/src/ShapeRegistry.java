@@ -19,7 +19,8 @@ public class ShapeRegistry {
                 case 2 -> new RectShape(x1, y1, x2, y2);
                 case 3 -> new EllipseShape(x1, y1, x2, y2);
                 case 4 -> new LineOShape(x1, y1, x2, y2);
-                default -> new CubeShape(x1, y1, x2, y2);
+                case 5 -> new CubeShape(x1, y1, x2, y2);
+                default -> new PointShape(x1, y1, x2, y2);
             };
     }
 
