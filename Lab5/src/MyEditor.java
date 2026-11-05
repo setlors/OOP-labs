@@ -97,8 +97,14 @@ public class MyEditor implements MyTable.TableListener {
         try (BufferedWriter w = Files.newBufferedWriter(f.toPath())) {
             for (int i = 0; i < count; i++) {
                 Shape s = shapes[i];
-                w.write(s.getName() + ";" + s.getX1() + ";" + s.getY1() + ";"
-                        + s.getX2() + ";" + s.getY2());
+                String[] fields = {
+                        s.getName(),
+                        String.valueOf(s.getX1()),
+                        String.valueOf(s.getY1()),
+                        String.valueOf(s.getX2()),
+                        String.valueOf(s.getY2())
+                };
+                w.write(String.join(",", fields));
                 w.newLine();
             }
         } catch (IOException e) {
@@ -125,7 +131,7 @@ public class MyEditor implements MyTable.TableListener {
     }
 
     private Shape parseLine(String line) {
-        String[] p = line.trim().split(";");
+        String[] p = line.trim().split(",");
         if (p.length != 5) return null;
         int t = ShapeRegistry.indexOf(p[0]);
         if (t < 0) return null;
