@@ -1,3 +1,5 @@
+package logic;
+
 import java.util.*;
 
 public class TextOperations {
@@ -10,11 +12,9 @@ public class TextOperations {
             "Пронумерувати рядки",
             "Частотний словник слів"
     };
-
     public static int size() {
         return NAMES.length;
     }
-
     public static String name(int i) {
         return NAMES[i];
     }

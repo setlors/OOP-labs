@@ -1,3 +1,5 @@
+package logic;
+
 import javax.swing.*;
 import javax.swing.undo.UndoManager;
 import java.io.File;
@@ -12,7 +14,6 @@ public class Editor {
     public static Editor getInstance() {
         return Holder.INSTANCE;
     }
-
     private Editor() {
     }
 
@@ -34,7 +35,6 @@ public class Editor {
         undo.discardAllEdits();
         file = null;
     }
-
     public void load(File f) {
         try {
             area.setText(Files.readString(f.toPath()));
@@ -54,16 +54,12 @@ public class Editor {
             e.printStackTrace();
         }
     }
-
     public void undo() {
         if (undo.canUndo()) undo.undo();
     }
-
     public void redo() {
         if (undo.canRedo()) undo.redo();
     }
-
-    // обробка виділеного фрагмента, а якщо нічого не виділено - всього тексту
     public void process(int op) {
         String selected = area.getSelectedText();
         if (selected == null) {
@@ -72,7 +68,6 @@ public class Editor {
             area.replaceSelection(TextOperations.apply(op, selected));
         }
     }
-
     public boolean find(String what) {
         String text = area.getText();
         int i = text.indexOf(what, area.getSelectionEnd());
@@ -81,7 +76,6 @@ public class Editor {
         area.select(i, i + what.length());
         return true;
     }
-
     public void replaceAll(String what, String with) {
         area.setText(area.getText().replace(what, with));
     }
